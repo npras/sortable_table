@@ -1,5 +1,5 @@
 (function($){
-  $('table#myTable').on('click', function(){
-    alert("stuff clickd!");
+  $('table#myTable th').on('click', function(){
+    alert($(this).text());
   });
 })(jQuery);
