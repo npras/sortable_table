@@ -5,7 +5,7 @@
 
   function prepareTable(table_id){
     table = $('table' + '#' + table_id);
-    rows = table.find('tbody > tr').size();
+    rows = table.find('tbody tr').size();
     cols = table.find('thead th').size();
     console.log("rows: " + rows + ", cols: " + cols);
   }
