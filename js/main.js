@@ -12,23 +12,28 @@
     console.log("rows: " + rows_cnt + ", cols: " + cols_cnt + " , headers: " + headers);
   }
 
-  function mySort(array){
-    return array.sort();
-  }
+  function compare(obj_a, obj_b){
+    selector = "td:nth-child("+ clckd_idx +")";
+    a = $(obj_a).find(selector).text();
+    b = $(obj_b).find(selector).text();
+    if(a < b){
+      return -1;
+    } else if(a > b){
+      return 1;
+    } else {
+      return 0;
+    }
+  };
 
-  // collect the clicked column's data into an array
-  $('table#myTable th').on('click', function(){
+  $('table#myTable2 th').on('click', function(){
+    sorted_rows = $("table#myTable2 tbody tr");
     clckd_header = $(this).text();
     clckd_idx = headers.indexOf(clckd_header) + 1;
-    col_data = [];
-    col_data_selector_expr = "tbody tr td:nth-child("+ clckd_idx +")";
-    $(col_data_selector_expr).each(function(){
-      col_data.push($(this).text());
-    });
-    col_data = mySort(col_data);
-    alert("col_data: " + col_data);
+    td_selector_expr = "td:nth-child("+ clckd_idx +")";
+    sorted_rows.sort(compare);
+    $("table#myTable2 tbody").replaceWith(sorted_rows);
   });
 
-  prepareTable('myTable');
+  prepareTable('myTable2');
 
 })(jQuery);
