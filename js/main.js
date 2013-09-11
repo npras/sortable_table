@@ -31,7 +31,9 @@
     clckd_idx = headers.indexOf(clckd_header) + 1;
     td_selector_expr = "td:nth-child("+ clckd_idx +")";
     sorted_rows.sort(compare);
-    $("table#myTable2 tbody").replaceWith(sorted_rows);
+    //$("table#myTable2 tbody").replaceWith(sorted_rows);
+    $("table#myTable2 tbody tr").remove();
+    $("table#myTable2 tbody").append(sorted_rows);
   });
 
   prepareTable('myTable2');
