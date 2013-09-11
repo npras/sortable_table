@@ -16,13 +16,15 @@
     selector = "td:nth-child("+ clckd_idx +")";
     a = $(obj_a).find(selector).text();
     b = $(obj_b).find(selector).text();
-    if(a < b){
-      return -1;
-    } else if(a > b){
-      return 1;
-    } else {
-      return 0;
-    }
+    //if(a < b){
+      //return -1;
+    //} else if(a > b){
+      //return 1;
+    //} else {
+      //return 0;
+    //}
+    // but the above code is more readable. I prefer that to this:
+    return (a > b);
   };
 
   $('table#myTable2 th').on('click', function(){
