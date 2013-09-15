@@ -55,14 +55,27 @@
     items.sort(function(row_obj_a, row_obj_b){
       human_idx = sort_key_idx + 1;
       value_selector = "td:nth-child("+ human_idx +")";
-      a = $(row_obj_a).find(value_selector).text();
-      b = $(row_obj_b).find(value_selector).text();
+      a_text = $(row_obj_a).find(value_selector).text();
+      b_text = $(row_obj_b).find(value_selector).text();
+      a = string_or_num(a_text);
+      b = string_or_num(b_text);
       if(is_ascending){
         return (a < b);
       } else{
         return (a > b);
       }
     });
+  }
+
+  function string_or_num(text){
+    match = text.match(/^\$?([+\-]?\d+\.?\d*%?)$/);
+    if(match){
+      console.log("matched! : " + match[1]);
+      return parseFloat(match[1], 10);
+    } else{
+      console.log("NO match! : " + text);
+      return text;
+    }
   }
 
 })(jQuery);
