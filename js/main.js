@@ -3,7 +3,7 @@
   var table;
   var headers;
 
-  prepareTable('myTable2');
+  prepareTable('myTable3');
 
   // Populate the table and headers vars.
   function prepareTable(table_id){
@@ -42,7 +42,7 @@
 
   function toggle_sort(items, sort_key_idx){
     var is_ascending = false;
-    
+
     // Toggle logic.
     if(headers[sort_key_idx].flag === "dsc"){
       headers[sort_key_idx].flag = "asc";
