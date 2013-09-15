@@ -57,8 +57,8 @@
       value_selector = "td:nth-child("+ human_idx +")";
       a_text = $(row_obj_a).find(value_selector).text();
       b_text = $(row_obj_b).find(value_selector).text();
-      a = string_or_num(a_text);
-      b = string_or_num(b_text);
+      a = string_or_num_or_date(a_text);
+      b = string_or_num_or_date(b_text);
       if(is_ascending){
         return (a < b);
       } else{
@@ -67,11 +67,14 @@
     });
   }
 
-  function string_or_num(text){
+  function string_or_num_or_date(text){
     match = text.match(/^\$?([+\-]?\d+\.?\d*%?)$/);
     if(match){
       console.log("matched! : " + match[1]);
       return parseFloat(match[1], 10);
+    } else if(date_inst = Date.parse(text)){
+      console.log("DATE match! : " + text);
+      return date_inst;
     } else{
       console.log("NO match! : " + text);
       return text;
